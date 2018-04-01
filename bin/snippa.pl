@@ -10,7 +10,7 @@ use Snippa::Logger ':all';
 
 our $TOOLNAME = 'snippa';
 our $VERSION = '0.1';
-my @COMMAND = (qw(makeref align call report core version));
+my @COMMAND = (qw(makeref align call report core snpeff version));
 
 my $ap = Getopt::ArgParse->new_parser(
   prog        => $TOOLNAME,
@@ -43,10 +43,9 @@ for my $cmd (@COMMAND) {
 #print Dumper($ap);
 
 my $arg = $ap->parse_args(); # uses @ARGV
-print Dumper($arg);
-
+#print Dumper($arg);
 my $cc = $arg->current_command || 'help';
-wrn("current_command = $cc");
+msg("[snippa] current_command = $cc");
 
 my $mod = "Snippa::Command::$cc";
 $mod->run($arg);

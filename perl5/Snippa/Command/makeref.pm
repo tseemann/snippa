@@ -39,7 +39,7 @@ sub run {
   copy($ref, $fasta);
   run_cmd("samtools faidx \Q$fasta\E");
   run_cmd("bwa index \Q$fasta\E");
-#  run_cmd("bowtie2-build \Q$fasta\E \Q$fasta\E");
+  run_cmd("bowtie2-build --quiet \Q$fasta\E \Q$fasta\E");
 }
 
 #----------------------------------------------------------------------
